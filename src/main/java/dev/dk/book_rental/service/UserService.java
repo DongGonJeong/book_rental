@@ -5,6 +5,8 @@ import dev.dk.book_rental.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -18,5 +20,10 @@ public class UserService {
         return insert_count > -1 ? true : false;
 
 
+    }
+
+    public List<UserDto> getUserList() {
+
+        return userMapper.selectUser();
     }
 }

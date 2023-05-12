@@ -21,6 +21,11 @@ repositories {
 
 dependencies {
 
+	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
+
+	// https://mvnrepository.com/artifact/javax.servlet/jstl
+//	implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'

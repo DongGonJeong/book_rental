@@ -8,14 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>index</title>
+    <title>user_index</title>
 </head>
 
 <body>
 
-<h1>hello</h1>
+<%--<h1>hello</h1>--%>
+<%--${view_text}--%>
 
-${view_text}
+<a href="/user/user_add">사용자 등록</a>
 
 </body>
 </html>

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @MapperScan("dev.dk.book_rental.mapper")
 @RequestMapping(value = "/user",
         method = {RequestMethod.GET, RequestMethod.POST})
@@ -24,6 +26,29 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @PostMapping("list")
+    public String user_list(Model model) {
+
+        List<UserDto> user_list = userService.getUserList();
+
+        model.addAttribute("user_list", user_list);
+
+        return "/user/list";
+
+    }
+
+    @PostMapping("user_add")
+    public String user_add_form() {
+
+        return "/user/add_form";
+    }
+
+    @PostMapping("")
+    public String user_index() {
+
+        return "/user/index";
+    }
 
     @PostMapping("add")
     public String add_user(
@@ -48,8 +73,9 @@ public class UserController {
 
         boolean add_check = userService.addUser(userDto);
 
+        System.out.println("add_check ==>> " + add_check);
 
-
+        return "redirect:/user/list";
 
     }
 }

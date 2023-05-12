@@ -12,10 +12,28 @@
 
     <insert id="insertUser">
 
-        insert into user(user_no,name,age,hp,address,status,status_reason,max_count,count)
-        values (user_no,name,age,hp,address,status,status_reason,max_count,count)
-
+        insert into
+            user(user_no,name,age,hp,address,status,status_reason,max_count,on_rental_count)
+        values(
+               (SELECT ifnull(max(user_no),0)+1 FROM user us),
+               '${user.name}',
+               '${user.age}',
+               '${user.hp}',
+               '${user.address}',
+               '대여가능',
+               null,
+               0,
+               5);
     </insert>
+
+    <select id="selectUser" resultType="dev.dk.book_rental.dto.UserDto">
+
+        select * from user
+
+    </select>
+
+
+
 
 
 </mapper>

@@ -17,6 +17,6 @@ public class UserDto {
     private String Status_reason;
 
     private int max_count;
-    private int on_rental_count:
+    private int on_rental_count;
 
 }
