@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="../include/required_header.jsp"%>
+
 <html>
 <head>
     <title>user_index</title>
@@ -16,7 +18,7 @@
 <%--<h1>hello</h1>--%>
 <%--${view_text}--%>
 
-<a href="/user/user_add">사용자 등록</a>
+<a href="/user/user_add">회원 등록</a>
 
 </body>
 </html>

@@ -21,7 +21,7 @@
                '${user.hp}',
                '${user.address}',
                '대여가능',
-               null,
+               '개인사유',
                0,
                5);
     </insert>

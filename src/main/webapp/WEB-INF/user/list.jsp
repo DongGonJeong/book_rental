@@ -12,14 +12,36 @@
 <html>
 <head>
     <title>user list</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>
+
+<%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>--%>
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>--%>
+
+    <script>
+        $(document).ready(
+
+            function() {
+
+                $('#myTable').DataTable();
+
+            }
+        )
+    </script>
 </head>
 
 <body>
 
-    <table>
+    <table id="myTable">
 
         <thead>
             <tr>
+                <th>회원번호</th>
                 <th>회원명</th>
                 <th>나이</th>
                 <th>전화번호</th>

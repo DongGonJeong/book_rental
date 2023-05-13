@@ -21,8 +21,7 @@ public class MainController {
     LibraryService libraryService;
 
 
-    @GetMapping("hello")
-//    @PostMapping("hello")
+    @PostMapping("")
     public String hello(Model model) {
 
 //        System.out.println("GET 방식 request ==>> OK");
