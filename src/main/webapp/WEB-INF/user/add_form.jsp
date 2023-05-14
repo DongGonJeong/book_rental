@@ -6,27 +6,42 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>add_form</title>
+<%------------------------------------------------------------------%>
+
+<jsp:include page="../include/required_header.jsp"></jsp:include>
+
 </head>
 
 <body>
 
-<form action="/user/add" method="post">
+<jsp:include page="../include/inc_header.jsp"></jsp:include>
 
-    <label for="name">이름: </label><input type="text" name="name" id="name"><br>
+<div class="container-fluid">
+    <div class="row">
 
-    <label for="age">나이: </label><input type="text" name="age" id="age"><br>
+        <jsp:include page="../include/inc_sidebar.jsp"></jsp:include>
 
-    <label for="hp">전화번호: </label><input type="text" name="hp" id="hp"><br>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">회원 등록</h1>
+            </div>
 
-    <label for="address">주소: </label><input type="text" name="address"
-                                        id="address"><br>
+            <form action="/user/add" method="post">
 
-    <input type="submit">
+                <label for="name">이름: </label><input type="text" name="name" id="name"><br>
 
+                <label for="age">나이: </label><input type="text" name="age" id="age"><br>
 
-</form>
-</body>
-</html>
+                <label for="hp">전화번호: </label><input type="text" name="hp" id="hp"><br>
+
+                <label for="address">주소: </label><input type="text" name="address"
+                                                        id="address"><br>
+
+                <input type="submit">
+            </form>
+
+        </main>
+    </div>
+</div>
+
+<jsp:include page="../include/required_footer.jsp"></jsp:include>
