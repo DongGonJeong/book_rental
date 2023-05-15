@@ -27,6 +27,55 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @PostMapping("update_process")
+    public String update_process(HttpServletRequest request, Model model) {
+
+        String name = request.getParameter("name");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String hp = request.getParameter("hp");
+        String address = request.getParameter("address");
+
+        int user_no = Integer.parseInt(request.getParameter("user_no"));
+
+        UserDto userDto = new UserDto();
+
+        userDto.setName(name);
+        userDto.setAge(age);
+        userDto.setHp(hp);
+        userDto.setAddress(address);
+
+        userDto.setUser_no(user_no);
+
+        boolean update_check = userService.updateUser(userDto);
+
+
+        return "redirect:/user/list";
+
+    }
+
+    @PostMapping("update")
+    public  String user_update(HttpServletRequest request, Model model) {
+
+        String user_no = request.getParameter("user_no");
+
+        String type = request.getParameter("type");
+
+        if(type.equals("U")) {
+
+            UserDto userDto = userService.getUserInfo(user_no);
+
+            model.addAttribute("userInfo", userDto);
+
+            return "/user/update_form";
+
+        } else {
+
+        }
+
+        return "redirect:/user/list";
+
+    }
+
     @PostMapping("list")
     public String user_list(Model model) {
 

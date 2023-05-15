@@ -26,4 +26,18 @@ public class UserService {
 
         return userMapper.selectUser();
     }
+
+    public UserDto getUserInfo(String user_no) {
+
+        UserDto userDto = userMapper.selectOneUser(user_no);
+
+        return userDto;
+    }
+
+    public boolean updateUser(UserDto userDto) {
+
+        int update_count = userMapper.updateUser(userDto);
+
+        return update_count > -1 ? true : false;
+    }
 }

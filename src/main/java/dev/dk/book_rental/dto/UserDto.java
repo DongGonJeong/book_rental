@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserDto {
 
-    private String user_no;
+//    private String user_no;
+    private int user_no;
+
     private String name;
     private int age;
     private String hp;

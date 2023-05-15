@@ -85,8 +85,12 @@
 
                 </tbody>
             </table>
-
         </main>
+
+        <form action="/user/update" method="post" id="_frm">
+            <input type="hidden" name="user_no" id="_user_no">
+            <input type="hidden" name="type" id="_type">
+        </form>
     </div>
 </div>
 
@@ -104,7 +108,16 @@
         function() {
 
             $('#myTable').DataTable();
-
         }
-    )
+    );
+
+    function update_user(user_no, type) {
+
+        $('#_user_no').val(user_no);
+
+        $('#_type').val(type);
+
+        $('#_frm').submit();
+
+    }
 </script>

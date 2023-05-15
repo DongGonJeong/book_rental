@@ -12,9 +12,9 @@
 
     <insert id="insertUser">
 
-        insert into
+        INSERT INTO
             user(user_no,name,age,hp,address,status,status_reason,max_count,on_rental_count)
-        values(
+        VALUES (
                (SELECT ifnull(max(user_no),0)+1 FROM user us),
                '${user.name}',
                '${user.age}',
@@ -28,9 +28,28 @@
 
     <select id="selectUser" resultType="dev.dk.book_rental.dto.UserDto">
 
-        select * from user
+        SELECT * FROM user
 
     </select>
+
+    <select id="selectOneUser" resultType="dev.dk.book_rental.dto.UserDto">
+
+        SELECT *
+        FROM user
+        WHERE user_no = #{user_no}
+
+    </select>
+
+    <update id="updateUser">
+
+        UPDATE user
+        SET name = '${user.name}',
+            age = ${user.age},
+            hp = ${user.hp},
+            address = '${user.address}'
+        WHERE user_no = ${user.user_no}
+
+    </update>
 
 
 
