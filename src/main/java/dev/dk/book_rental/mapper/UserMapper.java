@@ -14,7 +14,9 @@ public interface UserMapper {
 
     List<UserDto> selectUser();
 
-    UserDto selectOneUser(@Param(value = "user_no") String user_no);
+    UserDto selectOneUser(@Param(value = "user_no") int user_no);
 
     int updateUser(@Param(value = "user") UserDto userDto);
+
+    int deleteUser(@Param(value = "user_no") int user_no);
 }

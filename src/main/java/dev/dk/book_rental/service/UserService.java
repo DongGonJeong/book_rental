@@ -27,7 +27,7 @@ public class UserService {
         return userMapper.selectUser();
     }
 
-    public UserDto getUserInfo(String user_no) {
+    public UserDto getUserInfo(int user_no) {
 
         UserDto userDto = userMapper.selectOneUser(user_no);
 
@@ -39,5 +39,14 @@ public class UserService {
         int update_count = userMapper.updateUser(userDto);
 
         return update_count > -1 ? true : false;
+    }
+
+    public boolean removeUser(int user_no) {
+
+        int delete_count = userMapper.deleteUser(user_no);
+
+        return delete_count > -1 ? true : false;
+
+
     }
 }

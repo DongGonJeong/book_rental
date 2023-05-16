@@ -51,6 +51,13 @@
 
     </update>
 
+    <delete id="deleteUser">
+
+        DELETE
+        FROM user
+        WHERE user_no = ${user_no}
+    </delete>
+
 
 
 

@@ -27,6 +27,19 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @PostMapping("detail")
+    public String detail_user(HttpServletRequest request, Model model) {
+
+        int user_no = Integer.parseInt(request.getParameter("user_no"));
+
+        UserDto userDto = userService.getUserInfo(user_no);
+
+        model.addAttribute("userInfo", userDto);
+
+        return "/user/detail";
+
+    }
+
     @PostMapping("update_process")
     public String update_process(HttpServletRequest request, Model model) {
 
@@ -54,9 +67,9 @@ public class UserController {
     }
 
     @PostMapping("update")
-    public  String user_update(HttpServletRequest request, Model model) {
+    public  String update_delete(HttpServletRequest request, Model model) {
 
-        String user_no = request.getParameter("user_no");
+        int user_no = Integer.parseInt(request.getParameter("user_no"));
 
         String type = request.getParameter("type");
 
@@ -69,6 +82,8 @@ public class UserController {
             return "/user/update_form";
 
         } else {
+
+            userService.removeUser(user_no);
 
         }
 

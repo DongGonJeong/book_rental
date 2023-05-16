@@ -45,9 +45,11 @@
                 <tr>
                     <th>회원번호</th>
                     <th>회원명</th>
-                    <th>나이</th>
-                    <th>전화번호</th>
-                    <th>주소</th>
+
+<%--                    <th>나이</th>--%>
+<%--                    <th>전화번호</th>--%>
+<%--                    <th>주소</th>--%>
+
                     <th>대여상태</th>
                     <th>사유</th>
                     <th>최대대여가능권수</th>
@@ -62,10 +64,14 @@
 
                     <tr>
                         <td>${user.user_no}</td>
-                        <td>${user.name}</td>
-                        <td>${user.age}</td>
-                        <td>${user.hp}</td>
-                        <td>${user.address}</td>
+
+<%--                        <td><a href="/user/detail?user_no = ${user.user_no}">${user.name}</a></td>--%>
+                        <td onclick="move_detail(${user.user_no})">${user.name}</td>
+
+<%--                        <td>${user.age}</td>--%>
+<%--                        <td>${user.hp}</td>--%>
+<%--                        <td>${user.address}</td>--%>
+
                         <td>${user.status}</td>
                         <td>${user.status_reason}</td>
                         <td>${user.max_count}</td>
@@ -76,7 +82,7 @@
 
 
                             <input type="button" value="삭제"
-                                   class="btn btn-delete" style="background-color: lightpink" onclick="delete_user(${user.user_no}, 'D')">
+                                   class="btn btn-delete" style="background-color: lightpink" onclick="update_user(${user.user_no}, 'D')">
                         </td>
 
                     </tr>
@@ -116,6 +122,26 @@
         $('#_user_no').val(user_no);
 
         $('#_type').val(type);
+
+        if(type == "D") {
+
+            if(confirm("정말 삭제하시겠습니까?")) {
+
+                $('#_frm').submit();
+
+            } else {
+                return;
+            }
+        }
+
+        $('#_frm').submit();
+    }
+
+    function move_detail(user_no) {
+
+        $('#_frm').attr("action", "/user/detail");
+
+        $('#_user_no').val(user_no);
 
         $('#_frm').submit();
 
