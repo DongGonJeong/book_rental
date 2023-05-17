@@ -123,18 +123,18 @@
 
         $('#_type').val(type);
 
-        if(type == "D") {
+        // if(type == "D") {
+        //     if(confirm("정말 삭제하시겠습니까?")) {
+        //         $('#_frm').submit();
+        //     } else {
+        //         return;
+        //     }
+        // }
+        if(confirm("정말 " + (type=="U"?"수정":"삭제") + "하시겠습니까?")) {
 
-            if(confirm("정말 삭제하시겠습니까?")) {
+            $('#_from').submit();
 
-                $('#_frm').submit();
-
-            } else {
-                return;
-            }
         }
-
-        $('#_frm').submit();
     }
 
     function move_detail(user_no) {

@@ -15,7 +15,7 @@
                 <a class="nav-link active" aria-current="page"
                    href="/user">
                     <span data-feather="home" class="align-text-bottom"></span>
-                    회원
+                    회원 main
                 </a>
             </li>
 
@@ -34,7 +34,65 @@
                     &nbsp;&nbsp;회원 목록
                 </a>
             </li>
+            <%--            -------------------------------------------------------------------------%>
 
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                   href="/book">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    도서 main
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                   href="/book/book_add">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    &nbsp;&nbsp;도서 등록
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                   href="/book/book_list">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    &nbsp;&nbsp;도서 조회
+                </a>
+            </li>
+<%--           ------------------------------------------------------------------------- --%>
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                   href="/book">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    도서 대여 main
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                   href="/book/book_add">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    &nbsp;&nbsp;도서 대여
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                   href="/user/list">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    &nbsp;&nbsp;도서 반납
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                   href="/user/list">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    &nbsp;&nbsp;연체 관리
+                </a>
+            </li>
 
         </ul>
 
