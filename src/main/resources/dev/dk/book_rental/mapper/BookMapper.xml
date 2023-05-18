@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">-->
+
+<!--</beans>-->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev.dk.book_rental.mapper.BookMapper">
+
+    <insert id="insertBook">
+
+        INSERT INTO
+            book(book_no,name,writer,publication_dt,price)
+        VALUES (
+               (SELECT ifnull(max(book_no),0)+1 FROM book bk),
+               '${book.name}',
+               '${book.writer}',
+               '${book.publication_dt}',
+               '${book.price}'
+               );
+    </insert>
+
+    <select id="selectBook" resultType="dev.dk.book_rental.dto.BookDto">
+
+        SELECT * FROM book
+
+    </select>
+
+    <select id="selectOneBook" resultType="dev.dk.book_rental.dto.BookDto">
+
+        SELECT *
+        FROM book
+        WHERE bool_no = #{book_no}
+
+    </select>
+
+    <update id="updateBook">
+
+        UPDATE book
+        SET name = '${book.name}',
+            writer = ${book.writer},
+            publication_dt = ${book.publication_dt},
+            price = '${book.price}'
+        WHERE book_no = ${book.book_no}
+
+    </update>
+
+    <delete id="deleteBook">
+
+        DELETE
+        FROM book
+        WHERE book_no = ${book_no}
+    </delete>
+
+
+
+
+
+</mapper>
