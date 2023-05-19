@@ -133,12 +133,13 @@ public class BookController {
 
         int price = Integer.parseInt(request.getParameter("price"));
 
-        BookDto bookDto = new BookDto();
+//        BookDto bookDto = new BookDto();
+        BookDto bookDto = new BookDto(name, writer, publication_dt, price);
 
-        bookDto.setName(name);
-        bookDto.setWriter(writer);
-        bookDto.setPublication_dt(publication_dt);
-        bookDto.setPrice(price);
+//        bookDto.setName(name);
+//        bookDto.setWriter(writer);
+//        bookDto.setPublication_dt(publication_dt);
+//        bookDto.setPrice(price);
 
         boolean add_check = bookService.addBook(bookDto);
 

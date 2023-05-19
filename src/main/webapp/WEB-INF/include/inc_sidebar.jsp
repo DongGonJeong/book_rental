@@ -55,9 +55,9 @@
 
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page"
-                   href="/book/book_list">
+                   href="/book/list">
                     <span data-feather="home" class="align-text-bottom"></span>
-                    &nbsp;&nbsp;도서 조회
+                    &nbsp;&nbsp;도서 목록
                 </a>
             </li>
 <%--           ------------------------------------------------------------------------- --%>

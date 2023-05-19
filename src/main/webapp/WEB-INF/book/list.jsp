@@ -36,53 +36,39 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">회원 목록</h1>
+                <h1 class="h2">도서 목록</h1>
             </div>
 
             <table id="myTable">
 
                 <thead>
                 <tr>
-                    <th>회원번호</th>
-                    <th>회원명</th>
-
-<%--                    <th>나이</th>--%>
-<%--                    <th>전화번호</th>--%>
-<%--                    <th>주소</th>--%>
-
-                    <th>대여상태</th>
-                    <th>사유</th>
-                    <th>최대대여가능권수</th>
-                    <th>현재대여권수</th>
+                    <th>도서 번호</th>
+                    <th>도서 이름</th>
+                    <th>저자</th>
+                    <th>출판일자</th>
+                    <th>가격</th>
 
                     <th></th>
                 </tr>
                 </thead>
 
                 <tbody>
-                <c:forEach var="user" items="${user_list}">
+                <c:forEach var="book" items="${book_list}">
 
                     <tr>
-                        <td>${user.user_no}</td>
-
-<%--                        <td><a href="/user/detail?user_no = ${user.user_no}">${user.name}</a></td>--%>
-                        <td onclick="move_detail(${user.user_no})">${user.name}</td>
-
-<%--                        <td>${user.age}</td>--%>
-<%--                        <td>${user.hp}</td>--%>
-<%--                        <td>${user.address}</td>--%>
-
-                        <td>${user.status}</td>
-                        <td>${user.status_reason}</td>
-                        <td>${user.max_count}</td>
-                        <td>${user.on_rental_count}</td>
+                        <td>${book.book_no}</td>
+                        <td>${book.name}</td>
+                        <td>${book.writer}</td>
+                        <td>${book.publication_dt}</td>
+                        <td>${book.price}</td>
 
                         <td>
-                            <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_user(${user.user_no}, 'U')">
+                            <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_book(${book.book_no}, 'U')">
 
 
                             <input type="button" value="삭제"
-                                   class="btn btn-delete" style="background-color: lightpink" onclick="update_user(${user.user_no}, 'D')">
+                                   class="btn btn-delete" style="background-color: lightpink" onclick="update_book(${book.book_no}, 'D')">
                         </td>
 
                     </tr>
@@ -93,8 +79,8 @@
             </table>
         </main>
 
-        <form action="/user/update" method="post" id="_frm">
-            <input type="hidden" name="user_no" id="_user_no">
+        <form action="/book/update" method="post" id="_frm">
+            <input type="hidden" name="book_no" id="_book_no">
             <input type="hidden" name="type" id="_type">
         </form>
     </div>
@@ -117,9 +103,9 @@
         }
     );
 
-    function update_user(user_no, type) {
+    function update_book(book_no, type) {
 
-        $('#_user_no').val(user_no);
+        $('#_book_no').val(book_no);
 
         $('#_type').val(type);
 
@@ -137,13 +123,5 @@
         }
     }
 
-    function move_detail(user_no) {
 
-        $('#_frm').attr("action", "/user/detail");
-
-        $('#_user_no').val(user_no);
-
-        $('#_frm').submit();
-
-    }
 </script>

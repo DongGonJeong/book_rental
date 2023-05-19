@@ -33,7 +33,7 @@
 
         SELECT *
         FROM book
-        WHERE bool_no = #{book_no}
+        WHERE book_no = #{book_no}
 
     </select>
 
@@ -41,9 +41,9 @@
 
         UPDATE book
         SET name = '${book.name}',
-            writer = ${book.writer},
-            publication_dt = ${book.publication_dt},
-            price = '${book.price}'
+            writer = '${book.writer}',
+            publication_dt = '${book.publication_dt}',
+            price = ${book.price}
         WHERE book_no = ${book.book_no}
 
     </update>

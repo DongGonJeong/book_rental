@@ -30,7 +30,8 @@ public class MainController {
 
         model.addAttribute("view_text", view_text);
 
-        return "/index";
+//        return "/index0";
+        return "redirect:/index.html";
 
     }
 }
