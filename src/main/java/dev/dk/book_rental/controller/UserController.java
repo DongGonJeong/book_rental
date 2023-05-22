@@ -36,7 +36,7 @@ public class UserController {
 
         model.addAttribute("userInfo", userDto);
 
-        return "/user/detail";
+        return "redirect:/user/detail.html";
 
     }
 
@@ -79,7 +79,7 @@ public class UserController {
 
             model.addAttribute("userInfo", userDto);
 
-            return "/user/update_form";
+            return "redirect:/user/update_form.html";
 
         } else {
 
@@ -98,20 +98,21 @@ public class UserController {
 
         model.addAttribute("user_list", user_list);
 
-        return "/user/list";
+        return "redirect:/user/list.html";
 
     }
 
     @PostMapping("user_add")
     public String user_add_form() {
 
-        return "/user/add_form";
+        return "redirect:/user/add_form.html";
     }
 
     @PostMapping("")
     public String user_index() {
 
-        return "/user/index";
+//        return "/user/index";
+        return "redirect:/user/index.html";
     }
 
     @PostMapping("add")

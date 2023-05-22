@@ -21,6 +21,10 @@ repositories {
 
 dependencies {
 
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.2'
+
+
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
 
 	// https://mvnrepository.com/artifact/javax.servlet/jstl

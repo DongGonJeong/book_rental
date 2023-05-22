@@ -24,6 +24,17 @@ public class RestBookController {
     @Autowired
     BookService bookService;
 
+    @PostMapping("list")
+    public String book_list(Model model) {
+
+        List<BookDto> book_list = bookService.getBookList();
+
+        model.addAttribute("book_list", book_list);
+
+        return "/book/list";
+
+    }
+
     @PostMapping("book_add")
     public String book_add_form() {
 
@@ -47,7 +58,7 @@ public class RestBookController {
 
         System.out.println("add_check ==>> " + add_check);
 
-        return "redirect:/book/list";
+        return "add_check";
 
     }
 }

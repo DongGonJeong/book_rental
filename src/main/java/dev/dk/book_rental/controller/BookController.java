@@ -84,7 +84,7 @@ public class BookController {
 
             model.addAttribute("bookInfo", bookDto);
 
-            return "/book/update_form";
+            return "redirect:/book/update_form.html";
 
         } else {
 
@@ -103,7 +103,7 @@ public class BookController {
 
         model.addAttribute("book_list", book_list);
 
-        return "/book/list";
+        return "redirect:/book/list.html";
 
     }
 
@@ -118,7 +118,8 @@ public class BookController {
     @PostMapping("")
     public String book_index() {
 
-        return "/book/index";
+//        return "/book/index";
+        return "redirect:/book/index.html";
     }
 
     @PostMapping("add")
