@@ -110,7 +110,9 @@ public class BookController {
     @PostMapping("book_add")
     public String book_add_form() {
 
-        return "/book/add_form";
+//        return "/book/add_form";
+        return "redirect:/book/add_form.html";
+
     }
 
     @PostMapping("")

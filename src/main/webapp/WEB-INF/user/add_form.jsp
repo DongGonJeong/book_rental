@@ -28,13 +28,13 @@
 
             <form action="/user/add" method="post">
 
-                <label for="name">이름: </label><input type="text" name="name" id="name"><br>
+                <label for="name">이름: </label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="name" id="name"><br>
 
-                <label for="age">나이: </label><input type="text" name="age" id="age"><br>
+                <label for="age">나이: </label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="age" id="age"><br>
 
                 <label for="hp">전화번호: </label><input type="text" name="hp" id="hp"><br>
 
-                <label for="address">주소: </label><input type="text" name="address"
+                <label for="address">주소: </label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="address"
                                                         id="address"><br>
 
                 <input type="submit">
