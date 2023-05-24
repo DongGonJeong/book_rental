@@ -98,7 +98,8 @@ public class UserController {
 
         model.addAttribute("user_list", user_list);
 
-        return "redirect:/user/list.html";
+//        return "redirect:/user/list.html";
+        return "/user/list";
 
     }
 

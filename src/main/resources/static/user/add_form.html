@@ -154,7 +154,7 @@
                 <label for="address">주소: </label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="address"
                                                                                       id="address"><br>
 
-                <input type="submit">
+                <input type="button" class="form_submit" value="회원 저장">
             </form>
 
         </main>
@@ -171,3 +171,42 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script>
 
 <script src="dashboard.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+
+        $('input.form_submit').on("click", function() {
+
+            $.ajax({
+                type:'POST',
+                url: '/rest_user/add',
+                headers : { "content-type": "application/json"},
+                dataType : 'text',
+                data : JSON.stringify(
+                    {
+                        "name":$("#name").val(),
+                        "age":$("#age").val(),
+                        "hp":$("#hp").val(),
+                        "address":$("#address").val(),
+
+                    }
+                ),
+
+                success : function(result){
+
+                    alert('등록 성공!!');
+
+                    // location.href = 'redirect:/rest_user/list';
+                    location.href = '/user/list';
+
+                },
+
+                error   : function(){ alert("error") } // 에러가 발생했을 때, 호출될 함수
+
+            }); // $.ajax()
+        })
+
+    });
+</script>
