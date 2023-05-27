@@ -50,9 +50,7 @@ public class RestUserController {
     }
 
     @PostMapping("add")
-    public String add_user(
-            @RequestBody UserDto userDto)
-    {
+    public String add_user(@RequestBody UserDto userDto) {
 
         System.out.println(userDto);
 

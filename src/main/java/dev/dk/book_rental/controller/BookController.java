@@ -99,11 +99,12 @@ public class BookController {
     @PostMapping("list")
     public String book_list(Model model) {
 
-        List<BookDto> book_list = bookService.getBookList();
+//        List<BookDto> book_list = bookService.getBookList();
 
-        model.addAttribute("book_list", book_list);
+//        model.addAttribute("book_list", book_list);
 
-        return "redirect:/book/list.html";
+//        return "redirect:/book/list.html";
+        return "/book/list";
 
     }
 

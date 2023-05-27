@@ -20,9 +20,9 @@ public class BookService {
         return insert_count > -1 ? true : false;
     }
 
-    public List<BookDto> getBookList() {
+    public List<BookDto> getBookList(String order) {
 
-        return bookMapper.selectBook();
+        return bookMapper.selectBook(order);
     }
 
     public BookDto getBookInfo(int book_no) {

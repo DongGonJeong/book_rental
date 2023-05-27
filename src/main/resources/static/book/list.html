@@ -355,7 +355,26 @@
     $(document).ready(
         function () {
 
-            $('#myTable').DataTable();
+            $('#myTable').DataTable(
+
+                {
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": {
+                        "url": "/script/post.php",
+                        "type": "POST"
+                    },
+
+                    "columns": [
+                        { "data": "book_no", "title": "도서 번호" },
+                        { "data": "name", "title": "도서 이름" },
+                        { "data": "writer", "title": "저자" },
+                        { "data": "publication_dt", "title": "출판일자" },
+                        { "data": "price", "title": "가격" },
+                        { "data": "button", "title": "" }
+                    ]
+                }
+            );
 
             $('.btn_edit').on("click", function () {
 
