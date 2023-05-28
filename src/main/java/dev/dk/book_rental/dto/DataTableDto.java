@@ -2,21 +2,27 @@ package dev.dk.book_rental.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Map;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class DataTableDto {
 
-    private int draw;
+    private String draw;
 
-    private Map<String, String> columns;
+    private List<ColumnsDto> columns;
 
-    private List<TableOrder> order;
+    private List<TableOrderDto> order;
                               /*
                                 column & dir(asc or desc)
+                                --------------------------
+
+                                @ class 명을,,
+                                  TableOderDto로 고쳐야,,
+                                  error 발생안함!!
                               */
 
     private int start;
@@ -29,12 +35,21 @@ public class DataTableDto {
 
         String result_order = "";
 
-        for(int i = 0; i < order.size(); i++) {
+        try {
 
-            result_order += (result_order.equals("") ? "" : ",")
-                         + columns.get(order.get(i).getColumn())
-                         + " "
-                         + order.get(i).getDir();
+            for(int i = 0; i < order.size(); i++) {
+
+                result_order += (result_order.equals("") ? "" : ",")
+
+                        + columns.get(Integer.parseInt(order.get(i).getColumn()))
+                        + " "
+                        + order.get(i).getDir();
+
+            }
+
+        } catch(NullPointerException e) {
+
+            System.out.println("order 리스트 넘어오지 않음");
 
         }
 
@@ -44,6 +59,9 @@ public class DataTableDto {
 
         }
 
-        return "ORDERED By " + result_order;
+        return "ORDER By " + result_order;
     }
 }
+
+
+

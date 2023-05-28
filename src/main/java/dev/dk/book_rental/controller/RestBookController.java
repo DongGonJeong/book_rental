@@ -49,7 +49,7 @@ public class RestBookController {
 //
 //    }
     @PostMapping("list")
-    public Map<String, Object> book_list(@RequestBody DataTableDto dataTableDto) {
+    public Map<String, Object> book_list(@ModelAttribute DataTableDto dataTableDto) {
 
         System.out.println(dataTableDto.toString());
 
