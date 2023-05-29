@@ -15,11 +15,26 @@ public class BookDto {
     private String publication_dt;
     private int price;
 
+    private String button;
+
     public BookDto(String name, String writer, String publication_dt, int price) {
 
         this.name = name;
         this.writer = writer;
         this.publication_dt = publication_dt;
         this.price = price;
+    }
+
+    public void createButton() {
+
+        if(book_no > 0) {
+
+            button = "<input id=\"else_"+book_no+"\" type=\"button\" value=\"수정\" class=\"btn btn-modify\" style=\"background-color: lightskyblue;\" onclick=\"update_book("+book_no+", 'U')\">"
+                    +
+                    "<input type=\"button\" value=\"삭제\"\n" +
+                    "                                   class=\"btn btn-delete\" style=\"background-color: lightpink; margin-left: 1em !important\" onclick=\"update_book("+book_no+", 'D')\">";
+        }
+
+
     }
 }

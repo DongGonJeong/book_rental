@@ -84,7 +84,7 @@ public class BookController {
 
             model.addAttribute("bookInfo", bookDto);
 
-            return "redirect:/book/update_form.html";
+            return "/book/update_form";
 
         } else {
 

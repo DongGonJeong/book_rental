@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,23 +32,8 @@ public class RestBookController {
     @Autowired
     BookService bookService;
 
-//    @PostMapping("list")
-//    public String book_list(@RequestBody DataTableDto dataTableDto) {
-//
-//        List<BookDto> book_list = bookService.getBookList();
-//
-//        return "/book/list";
-//    }
-//    @PostMapping("list")
-//    public String book_list(Model model) {
-//
-//        List<BookDto> book_list = bookService.getBookList();
-//
-//        model.addAttribute("book_list", book_list);
-//
-//        return "redirect:/book/list.html";
-//
-//    }
+
+//    @GetMapping("list")
     @PostMapping("list")
     public Map<String, Object> book_list(@ModelAttribute DataTableDto dataTableDto) {
 
@@ -59,11 +45,36 @@ public class RestBookController {
 
         List<BookDto> book_list = bookService.getBookList(dataTableDto.order_str());
 
+        List<BookDto> bookDTOFilterList = new ArrayList<>();
+
+        for(int i = 0; i < book_list.size(); i++) {
+
+            BookDto bookDto = book_list.get(i);
+
+            if(
+                    bookDto.getName().equals(dataTableDto.getSearch())
+                            || bookDto.getWriter().equals(dataTableDto.getSearch())
+                            || bookDto.getPublication_dt().equals(dataTableDto.getSearch())
+                            || dataTableDto.getSearch() == null
+            ) {
+
+                bookDto.createButton();
+
+                bookDTOFilterList.add(bookDto);
+
+            }
+
+        }
+
+        System.out.println(bookDTOFilterList.get(0));
+
         result_map.put("draw", dataTableDto.getDraw());
 
+        result_map.put("recordsTotal",book_list.size());
+        result_map.put("recordsFiltered",bookDTOFilterList.size());
+        result_map.put("data",bookDTOFilterList);
 
         return result_map;
-
     }
 
 
