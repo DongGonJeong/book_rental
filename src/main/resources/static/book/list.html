@@ -317,17 +317,7 @@
 
             <div class="modal-body p-5 pt-0">
                 <form class="">
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
-                    </div>
 
-                    <div class="form-floating mb-3">
-                        <input type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Password</label>
-                    </div>
-
-                    <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Save 하기</button>
 
                 </form>
             </div>
@@ -373,7 +363,13 @@
                         { "data": "writer", "title": "저자" },
                         { "data": "publication_dt", "title": "출판일자" },
                         { "data": "price", "title": "가격" },
-                        { "data": "button", "title": "" }
+                        { "data": "button", "title": "수정/삭제 버튼" }
+
+                           /*
+                             book >> list.html의,,
+                             data table의,,
+                             title이 됨!!
+                           */
                     ]
                 }
             );
@@ -391,16 +387,44 @@
 
         $('#_type').val(type);
 
-        // if(type == "D") {
-        //     if(confirm("정말 삭제하시겠습니까?")) {
-        //         $('#_frm').submit();
-        //     } else {
-        //         return;
-        //     }
-        // }
         if (confirm("정말 " + (type == "U" ? "수정" : "삭제") + "하시겠습니까?")) {
 
+            let th_arr = ["book_no", "book_name", "book_writer", "book_publication_dt", "book_price"];
+
             $('#modal_edit').modal('show');
+
+            let idx = 0;
+
+            $("#edit_" + book_no).parent().parent().find('td').each(function() {
+                                            /*
+                                              td 요소가 여러 개인데,,
+                                              -----------------------------
+                                              each(function() {~ ~})에 의해,,
+                                              순서대로 하나씩,,
+                                              처리되는 것임!!
+                                            */
+
+                let td = $(this);
+
+                // if(idx <= th_arr.length) {
+                if(idx < th_arr.length) {
+
+                    $('#modal_edit form').append(
+                        "<div class=\"form-floating mb-3\">" +
+
+                        "<input type=\"text\" class=\"form-control rounded-3\" id=\"floatingInput\" placeholder=\" "+th_arr[idx]+" \" value='"+td.text()+"'>" +
+
+                        "<label for=\"floatingInput\">"+th_arr[idx]+"</label>" +
+
+                        "</div>"
+                    );
+
+                    idx++;
+                }
+              }
+            );
+
+            $("#modal_edit form").append("<button class=\"w-100 mb-2 btn btn-lg rounded-4 btn-primary\" type=\"submit\">수정하기</button>");
 
         }
     }
