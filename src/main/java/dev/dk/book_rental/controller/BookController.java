@@ -67,7 +67,7 @@ public class BookController {
         boolean update_check = bookService.updateBook(bookDto);
 
 
-        return "redirect:/book/list";
+        return "redirect:/book/list.html";
 
     }
 
@@ -92,7 +92,8 @@ public class BookController {
 
         }
 
-        return "redirect:/book/list";
+//        return "redirect:/book/list";
+        return "redirect:/book/list.html";
 
     }
 
@@ -103,8 +104,8 @@ public class BookController {
 
 //        model.addAttribute("book_list", book_list);
 
-//        return "redirect:/book/list.html";
-        return "/book/list";
+        return "redirect:/book/list.html";
+//        return "/book/list";
 
     }
 

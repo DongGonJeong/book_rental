@@ -62,7 +62,7 @@ public class UserController {
         boolean update_check = userService.updateUser(userDto);
 
 
-        return "redirect:/user/list";
+        return "redirect:/user/list.html";
 
     }
 

@@ -311,7 +311,8 @@
 
             <div class="modal-header p-5 pb-4 border-bottom-0">
                 <!-- <h5 class="modal-title">Modal title</h5> -->
-                <h2 class="fw-bold mb-0">Sign up for free</h2>
+                <h2 class="fw-bold mb-0">도서 정보 수정</h2>
+
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -387,46 +388,61 @@
 
         $('#_type').val(type);
 
-        if (confirm("정말 " + (type == "U" ? "수정" : "삭제") + "하시겠습니까?")) {
+        if(type == 'U') {
 
-            let th_arr = ["book_no", "book_name", "book_writer", "book_publication_dt", "book_price"];
+            if (confirm("정말 " + (type == "U" ? "수정" : "삭제") + "하시겠습니까?")) {
 
-            $('#modal_edit').modal('show');
+                let th_arr = ["book_no", "name", "writer", "publication_dt", "price"];
 
-            let idx = 0;
+                $('#modal_edit').modal('show');
 
-            $("#edit_" + book_no).parent().parent().find('td').each(function() {
-                                            /*
-                                              td 요소가 여러 개인데,,
-                                              -----------------------------
-                                              each(function() {~ ~})에 의해,,
-                                              순서대로 하나씩,,
-                                              처리되는 것임!!
-                                            */
+                let idx = 0;
 
-                let td = $(this);
+                $('#modal_edit form').html("");
 
-                // if(idx <= th_arr.length) {
-                if(idx < th_arr.length) {
+                $('#modal_edit form').attr({"method": "POST", "action":"/book/update_process"});
 
-                    $('#modal_edit form').append(
-                        "<div class=\"form-floating mb-3\">" +
+                $("#edit_" + book_no).parent().parent().find('td').each(function() {
+                        /*
+                          td 요소가 여러 개인데,,
+                          -----------------------------
+                          each(function() {~ ~})에 의해,,
+                          순서대로 하나씩,,
+                          처리되는 것임!!
+                        */
 
-                        "<input type=\"text\" class=\"form-control rounded-3\" id=\"floatingInput\" placeholder=\" "+th_arr[idx]+" \" value='"+td.text()+"'>" +
+                        let td = $(this);
 
-                        "<label for=\"floatingInput\">"+th_arr[idx]+"</label>" +
+                        // if(idx <= th_arr.length) {
+                        if(idx < th_arr.length) {
 
-                        "</div>"
-                    );
+                            $('#modal_edit form').append(
+                                "<div class=\"form-floating mb-3\">" +
 
-                    idx++;
-                }
-              }
-            );
+                                "<input type=\"text\" "+(th_arr[idx] == "book_no" ? "readonly" : "")+" class=\"form-control rounded-3\" id=\"floatingInput\" placeholder=\" "+th_arr[idx]+" \" name=\""+th_arr[idx]+"\" value='"+td.text()+"'>" +
 
-            $("#modal_edit form").append("<button class=\"w-100 mb-2 btn btn-lg rounded-4 btn-primary\" type=\"submit\">수정하기</button>");
+                                "<label for=\"floatingInput\">"+th_arr[idx]+"</label>" +
+
+                                "</div>"
+                            );
+
+                            idx++;
+                        }
+                    }
+                );
+
+                $("#modal_edit form").append("<button class=\"w-100 mb-2 btn btn-lg rounded-4 btn-primary\" type=\"submit\">수정</button>");
+            }
+
+        } else {
+
+            $('#_type').val('D');
+
+            $('#_frm').submit();
 
         }
+
+
     }
 
 
