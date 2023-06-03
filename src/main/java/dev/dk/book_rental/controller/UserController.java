@@ -36,7 +36,7 @@ public class UserController {
 
         model.addAttribute("userInfo", userDto);
 
-        return "redirect:/user/detail.html";
+        return "/user/detail";
 
     }
 
@@ -61,8 +61,7 @@ public class UserController {
 
         boolean update_check = userService.updateUser(userDto);
 
-
-        return "redirect:/user/list.html";
+        return "redirect:/user/list";
 
     }
 
@@ -79,7 +78,7 @@ public class UserController {
 
             model.addAttribute("userInfo", userDto);
 
-            return "redirect:/user/update_form.html";
+            return "/user/update_form";
 
         } else {
 
@@ -106,7 +105,7 @@ public class UserController {
     @PostMapping("user_add")
     public String user_add_form() {
 
-        return "redirect:/user/add_form.html";
+        return "/user/add_form";
     }
 
     @PostMapping("")
