@@ -17,7 +17,7 @@
         VALUES (
                (SELECT ifnull(max(user_no),0)+1 FROM user us),
                '${user.name}',
-               '${user.age}',
+                ${user.age},
                '${user.hp}',
                '${user.address}',
                '대여가능',

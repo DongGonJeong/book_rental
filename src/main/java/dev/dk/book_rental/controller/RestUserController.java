@@ -8,31 +8,49 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @MapperScan("dev.dk.book_rental.mapper")
 @RequestMapping(value = "/rest_user",
         method = {RequestMethod.GET, RequestMethod.POST})
-@Controller
+@RestController
 public class RestUserController {
 
     @Autowired
     UserService userService;
 
 
-    @PostMapping("list")
-    public String user_list(Model model) {
+    @GetMapping("get_list")
+    @PostMapping
+    @ResponseBody
+    public Map<String, Object> user_list(Model model) {
 
         List<UserDto> user_list = userService.getUserList();
 
         model.addAttribute("user_list", user_list);
 
-        return "redirect:/user/list.html";
+        for(int i = 0; i < user_list.size(); i++) {
+
+            UserDto userDto = user_list.get(i);
+
+            userDto.createButton();
+
+        }
+
+        Map<String,Object> result_map = new HashMap<>();
+
+        result_map.put("draw", 1);
+        result_map.put("recordsTotal", user_list.size());
+        result_map.put("recordsFiltered", user_list.size());
+        result_map.put("data", user_list);
+
+        return result_map;
+
 
     }
 
@@ -50,15 +68,19 @@ public class RestUserController {
     }
 
     @PostMapping("add")
-    public String add_user(@RequestBody UserDto userDto) {
+    public Map<String, Object> add_user(@RequestBody UserDto userDto) {
 
-        System.out.println(userDto);
+        System.out.println("userDto ==>>" + userDto);
+
+        Map<String, Object> map = new HashMap<>();
 
         boolean add_check = userService.addUser(userDto);
 
         System.out.println("add_check ==>> " + add_check);
 
-        return "redirect:/rest_user/list";
+        map.put("Status", add_check);
+
+        return map;
 
     }
 }

@@ -97,15 +97,15 @@ public class UserController {
 
         model.addAttribute("user_list", user_list);
 
-//        return "redirect:/user/list.html";
-        return "/user/list";
+        return "redirect:/user/list.html";
+//        return "/user/list";
 
     }
 
     @PostMapping("user_add")
     public String user_add_form() {
 
-        return "/user/add_form";
+        return "redirect:/user/add_form.html";
     }
 
     @PostMapping("")
