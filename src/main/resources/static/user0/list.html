@@ -154,8 +154,140 @@
 
             <table id="myTable">
 
-<!--                table 요소 내,,전체 삭제 ==>> why) 가능-->
+                <thead>
+                <tr>
+                    <th>회원번호</th>
+                    <th>회원명</th>
 
+
+                    <th>대여상태</th>
+                    <th>사유</th>
+                    <th>최대대여가능권수</th>
+                    <th>현재대여권수</th>
+
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+
+                <tr>
+                    <td>1</td>
+
+
+                    <td onclick="move_detail(1)">user1</td>
+
+
+                    <td>대여가능</td>
+                    <td></td>
+                    <td>0</td>
+                    <td>5</td>
+
+                    <td>
+                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_user(1, 'U')">
+
+
+                        <input type="button" value="삭제"
+                               class="btn btn-delete" style="background-color: lightpink" onclick="update_user(1, 'D')">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td>4</td>
+
+
+                    <td onclick="move_detail(4)">user5</td>
+
+
+                    <td>대여가능</td>
+                    <td>개인사유</td>
+                    <td>0</td>
+                    <td>5</td>
+
+                    <td>
+                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_user(4, 'U')">
+
+
+                        <input type="button" value="삭제"
+                               class="btn btn-delete" style="background-color: lightpink" onclick="update_user(4, 'D')">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td>5</td>
+
+
+                    <td onclick="move_detail(5)">user70</td>
+
+
+                    <td>대여가능</td>
+                    <td>개인사유</td>
+                    <td>0</td>
+                    <td>5</td>
+
+                    <td>
+                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_user(5, 'U')">
+
+
+                        <input type="button" value="삭제"
+                               class="btn btn-delete" style="background-color: lightpink" onclick="update_user(5, 'D')">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td>6</td>
+
+
+                    <td onclick="move_detail(6)">user8</td>
+
+
+                    <td>대여가능</td>
+                    <td>개인사유</td>
+                    <td>0</td>
+                    <td>5</td>
+
+                    <td>
+                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_user(6, 'U')">
+
+
+                        <input type="button" value="삭제"
+                               class="btn btn-delete" style="background-color: lightpink" onclick="update_user(6, 'D')">
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td>7</td>
+
+
+                    <td onclick="move_detail(7)">user9</td>
+
+
+                    <td>대여가능</td>
+                    <td>개인사유</td>
+                    <td>0</td>
+                    <td>5</td>
+
+                    <td>
+                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_user(7, 'U')">
+
+
+                        <input type="button" value="삭제"
+                               class="btn btn-delete" style="background-color: lightpink" onclick="update_user(7, 'D')">
+                    </td>
+
+                </tr>
+
+
+                </tbody>
             </table>
         </main>
 
@@ -187,65 +319,62 @@
         function () {
 
             $('#myTable').DataTable(
-                {
-                "processing": true,
-                "serverSide": true,         //서버에서 값을 불러올지에 대한 여부
-                "searching":true,           //검색을 허용할 것인가?
-
-                "ajax": {
-                    "url": "/rest_user/get_list",
-                    dataType: "json",
-                    contentType: 'application/json',
-                    "type": "POST",
-                },
-
-                // "columns": [
-                //     { "data": "user_no",title:'회원번호', className: "user_no" },
-                //
-                //     { "data": "name",title:'회원명', className: "name" },
-                //
-                //     { "data": "pw",title:'비밀번호', className: "pw" },
-                //
-                //     { "data": "age",title:'나이', className: "age" },
-                //
-                //     { "data": "hp",title:'번호', className: "hp" },
-                //     { "data": "address",title:'주소', className: "address" },
-                //     { "data": "on_rental_count",title:'현재대여권수', className: "on_rental_count" },
-                //     { "data": "button",title:'수정/삭제 button', className: "button" }
-                // ],
-                    "columns": [
-                        { "data": "user_no",title:'회원번호'},
-
-                        { "data": "name",title:'회원명'},
-
-                        { "data": "pw",title:'비밀번호'},
-
-                        { "data": "age",title:'나이'},
-
-                        { "data": "hp",title:'번호'},
-                        { "data": "address",title:'주소'},
-                        { "data": "on_rental_count",title:'현재대여권수'},
-                        { "data": "button",title:'수정/삭제 button'}
-                    ],
-
-                "order": [[ 0, "desc" ]],
-                    dom: '<"html5buttons"B>lTfgitp',
-                    buttons: [
-                        {extend: 'copy'},
-
-                        {extend: 'excel', title: '목록'},
-
-                        {extend: 'pdf', title: '목록'},
-
-                        {extend: 'print',
-                            customize: function (win){
-                                $(win.document.body).addClass('white-bg');
-                                $(win.document.body).css('font-size', '10px');
-                                $(win.document.body).find('table').addClass('compact').css('font-size', 'inherit');
-                            }
-                        }
-                    ]
-            }
+            //     {
+            //
+            //
+            //     "responsive":true,          //반응형 테이블크기!!
+            //     "paging":true,              //페이지 처리
+            //     //"scrollX":true,           //X축 스크롤처리
+            //     //"scrollY":600,            //Y축 크기지정 및 스크롤처리
+            //     "scrollCollapse": true,
+            //     "ordering": true,           //정렬 사용 유무
+            //     // "lengthMenu": [ [20, 30, 50, 100, 200, -1], [20, 30, 50, 100, 200, "All"] ],//한페이지당 표시 할 수
+            //     "lengthMenu": [ [10, 20, 30, 40, 50, -1], [10, 20, 30, 40, 50, "All"] ],//한페이지당 표시 할 수
+            //     "processing": true,
+            //     "serverSide": true,         //서버에서 값을 불러올지에 대한 여부
+            //     "searching":true,           //검색을 허용할 것인가?
+            //
+            //     "ajax": {
+            //         "url": "/rest_user/get_list",
+            //         "type": "POST",
+            //         "data" : {
+            //         }
+            //     },
+            //
+            //     "columns": [
+            //         { "data": "user_no",title:'회원번호', className: "user_no" },
+            //
+            //         { "data": "name",title:'이름', className: "name" },
+            //
+            //         { "data": "pw",title:'비밀번호', className: "pw" },
+            //
+            //         { "data": "age",title:'나이', className: "age" },
+            //         { "data": "hp",title:'번호', className: "hp" },
+            //         { "data": "address",title:'주소', className: "address" },
+            //
+            //         { "data": "count",title:'현재대여권수', className: "count" }
+            //     ],
+            //
+            //     "order": [[ 0, "desc" ]],
+            //
+            //     dom: '<"html5buttons"B>lTfgitp',
+            //
+            //     buttons: [
+            //         {extend: 'copy'},
+            //
+            //         {extend: 'excel', title: '목록'},
+            //
+            //         {extend: 'pdf', title: '목록'},
+            //
+            //         {extend: 'print',
+            //             customize: function (win){
+            //                 $(win.document.body).addClass('white-bg');
+            //                 $(win.document.body).css('font-size', '10px');
+            //                 $(win.document.body).find('table').addClass('compact').css('font-size', 'inherit');
+            //             }
+            //         }
+            //     ]
+            // }
             );
         }
     );
