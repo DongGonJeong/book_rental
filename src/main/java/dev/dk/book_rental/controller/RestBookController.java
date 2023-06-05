@@ -7,6 +7,7 @@ import dev.dk.book_rental.dto.UserDto;
 import dev.dk.book_rental.service.BookService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,7 +67,16 @@ public class RestBookController {
 
     //    @GetMapping("list")
     @PostMapping("list")
-    public Map<String, Object> book_list(@ModelAttribute DataTableDto dataTableDto) {
+    public Map<String, Object> book_list(
+
+            @ModelAttribute DataTableDto dataTableDto,
+            HttpServletRequest request) {
+
+        HttpSession session = request.getSession();
+
+        UserDto userDto = (UserDto) session.getAttribute("userInfo");
+
+        System.out.println(userDto);
 
         System.out.println(dataTableDto.toString());
 

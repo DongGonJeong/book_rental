@@ -62,7 +62,9 @@
               'login_id':$('input[name=login_id]').val(),
               'login_pw':$('input[name=login_pw]').val()
             },
+
             dataType : "json",
+
             beforeSend: function( xhr ) {
               xhr.overrideMimeType( "text/plain; charset=utf8");
             }
@@ -72,7 +74,7 @@
 
               location.href = "/book/list.html";
 
-            }else{
+            } else{
 
               alert(result.msg);
             }
@@ -95,22 +97,17 @@
     
 <main class="form-signin">
   <form>
-<!--    <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">-->
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-<!--      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">-->
       <input type="text" class="form-control" name="login_id" id="floatingInput" placeholder="회원번호입력">
 
-<!--      <label for="floatingInput">Email address</label>-->
       <label for="floatingInput">회원번호(=user_id)</label>
     </div>
 
     <div class="form-floating">
-<!--      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">-->
-      <input type="password" class="form-control" name="login_pw" id="floatingPassword" placeholder="비밀번호입력력">
+      <input type="password" class="form-control" name="login_pw" id="floatingPassword" placeholder="비밀번호입력">
 
-<!--     <label for="floatingPassword">Password</label>-->
       <label for="floatingPassword">비밀번호(=pw)</label>
     </div>
 
@@ -123,7 +120,7 @@
 <!--    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>-->
       <input type="button" class="w-100 btn btn-lg btn-primary" value="Sign in" onclick="login_process()">
 
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
   </form>
 </main>
 

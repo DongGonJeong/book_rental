@@ -4,6 +4,7 @@ import dev.dk.book_rental.dto.UserDto;
 import dev.dk.book_rental.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,53 @@ public class RestUserController {
 
     @Autowired
     UserService userService;
+
+    @PostMapping("sign_in_process")
+    public Map<String, Object> sign_in_process(HttpServletRequest request) {
+
+        Map<String, Object> result_map = new HashMap<>();
+
+        boolean status = false;
+
+        String msg = "로그인 실패";
+
+        int user_no = Integer.parseInt(request.getParameter("login_id"));
+
+        String pw = request.getParameter("login_pw");
+
+//        UserDto userDto = new UserDto();
+        UserDto userDto = userService.getUserInfo(user_no);
+
+        if(userDto == null) {
+
+            msg = "해당하는 회원정보가없습니다!";
+
+        } else {
+
+            try {
+
+                if(pw.equals(userDto.getPw())) {
+
+                    status = true;
+                }
+            } catch(Exception e) {
+
+                System.err.println("error 발생");
+
+                e.printStackTrace();
+            }
+        }
+
+        HttpSession session = request.getSession();
+
+        session.setAttribute("userInfo", userDto);
+
+        result_map.put("status", status);
+        result_map.put("msg", msg);
+
+        return result_map;
+
+    }
 
 
     @GetMapping("get_list")
