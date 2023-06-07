@@ -52,6 +52,10 @@ public class BookService {
 
         bookMapper.updateLendBook(book_no, user_no);
 
+        bookMapper.updateRentalCount(user_no);
+
+
+
 
     }
 }

@@ -33,6 +33,8 @@ public class BookController {
 
         int book_no = Integer.parseInt(request.getParameter("book_no"));
 
+        System.out.println("book_no ==>> " + book_no);
+
         int user_no = ((UserDto)request.getSession().getAttribute("userInfo")).getUser_no();
 
         bookService.setLendBook(book_no, user_no);

@@ -19,5 +19,7 @@ public interface BookMapper {
 
     int deleteBook(@Param(value = "book_no") int book_no);
 
-    void updateLendBook(@Param(value = "book_no") int book_no, @Param(value = "user_no")int user_no);
+    void updateLendBook(@Param(value = "book_no") int book_no, @Param(value = "user_no") int user_no);
+
+    void updateRentalCount(@Param(value = "user_no") int user_no);
 }

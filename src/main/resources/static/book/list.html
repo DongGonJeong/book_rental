@@ -154,147 +154,7 @@
 
             <table id="myTable">
 
-                <thead>
-                <tr>
-                    <th>도서 번호</th>
-                    <th>도서 이름</th>
-                    <th>저자</th>
-                    <th>출판일자</th>
-                    <th>가격</th>
-
-                    <th></th>
-                </tr>
-                </thead>
-
-                <tbody>
-
-
-                <tr>
-                    <td>1</td>
-                    <td>코스모스</td>
-                    <td>칼 세이건</td>
-                    <td>20001010</td>
-                    <td>10000</td>
-
-                    <td>
-                        <input type="button" value="수정" class="btn btn-modify btn_edit" style="background-color: lightskyblue;" onclick="update_book(1, 'U')">
-
-
-                        <input type="button" value="삭제"
-                               class="btn btn-delete" style="background-color: lightpink" onclick="update_book(1, 'D')">
-                    </td>
-
-                </tr>
-
-
-                <tr>
-                    <td>2</td>
-                    <td>코스모스22</td>
-                    <td>칼 세이건22</td>
-                    <td>20001212</td>
-                    <td>121212</td>
-
-                    <td>
-                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_book(2, 'U')">
-
-
-                        <input type="button" value="삭제"
-                               class="btn btn-delete" style="background-color: lightpink" onclick="update_book(2, 'D')">
-                    </td>
-
-                </tr>
-
-
-                <tr>
-                    <td>3</td>
-                    <td>코스모스00</td>
-                    <td>칼 세이건0</td>
-                    <td>20001010</td>
-                    <td>11111</td>
-
-                    <td>
-                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_book(3, 'U')">
-
-
-                        <input type="button" value="삭제"
-                               class="btn btn-delete" style="background-color: lightpink" onclick="update_book(3, 'D')">
-                    </td>
-
-                </tr>
-
-
-                <tr>
-                    <td>4</td>
-                    <td>book1</td>
-                    <td>1</td>
-                    <td>11110101</td>
-                    <td>11111</td>
-
-                    <td>
-                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_book(4, 'U')">
-
-
-                        <input type="button" value="삭제"
-                               class="btn btn-delete" style="background-color: lightpink" onclick="update_book(4, 'D')">
-                    </td>
-
-                </tr>
-
-
-                <tr>
-                    <td>5</td>
-                    <td>55</td>
-                    <td>555</td>
-                    <td>20220505</td>
-                    <td>5555</td>
-
-                    <td>
-                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_book(5, 'U')">
-
-
-                        <input type="button" value="삭제"
-                               class="btn btn-delete" style="background-color: lightpink" onclick="update_book(5, 'D')">
-                    </td>
-
-                </tr>
-
-
-                <tr>
-                    <td>6</td>
-                    <td>66</td>
-                    <td>666</td>
-                    <td>6666</td>
-                    <td>66666</td>
-
-                    <td>
-                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_book(6, 'U')">
-
-
-                        <input type="button" value="삭제"
-                               class="btn btn-delete" style="background-color: lightpink" onclick="update_book(6, 'D')">
-                    </td>
-
-                </tr>
-
-
-                <tr>
-                    <td>7</td>
-                    <td>77</td>
-                    <td>777</td>
-                    <td>7777</td>
-                    <td>77777</td>
-
-                    <td>
-                        <input type="button" value="수정" class="btn btn-modify" style="background-color: lightskyblue;" onclick="update_book(7, 'U')">
-
-
-                        <input type="button" value="삭제"
-                               class="btn btn-delete" style="background-color: lightpink" onclick="update_book(7, 'D')">
-                    </td>
-
-                </tr>
-
-                </tbody>
+                <!-- table 요소 내,,전체 삭제 ==>> why) $('#myTable').DataTable(~ ~)에서 생성 가능 -->
             </table>
         </main>
 
@@ -386,7 +246,7 @@
 
         $('#_frm').attr("action", "/book/lend");
 
-        $('_book_no').val(book_no);
+        $('#_book_no').val(book_no);
 
         $('#_frm').submit();
 
@@ -398,9 +258,9 @@
 
         $('#_type').val(type);
 
-        if(type == 'U') {
+        if (confirm("정말 " + (type == "U" ? "수정" : "삭제") + "하시겠습니까?")) {
 
-            if (confirm("정말 " + (type == "U" ? "수정" : "삭제") + "하시겠습니까?")) {
+            if (type == 'U') {
 
                 let th_arr = ["book_no", "name", "writer", "publication_dt", "price"];
 
@@ -410,28 +270,28 @@
 
                 $('#modal_edit form').html("");
 
-                $('#modal_edit form').attr({"method": "POST", "action":"/book/update_process"});
+                $('#modal_edit form').attr({"method": "POST", "action": "/book/update_process"});
 
-                $("#edit_" + book_no).parent().parent().find('td').each(function() {
+                $("#edit_" + book_no).parent().parent().find('td').each(function () {
                         /*
-                          td 요소가 여러 개인데,,
-                          -----------------------------
-                          each(function() {~ ~})에 의해,,
-                          순서대로 하나씩,,
-                          처리되는 것임!!
-                        */
+                              td 요소가 여러 개인데,,
+                              -----------------------------
+                              each(function() {~ ~})에 의해,,
+                              순서대로 하나씩,,
+                              처리되는 것임!!
+                            */
 
                         let td = $(this);
 
                         // if(idx <= th_arr.length) {
-                        if(idx < th_arr.length) {
+                        if (idx < th_arr.length) {
 
                             $('#modal_edit form').append(
                                 "<div class=\"form-floating mb-3\">" +
 
-                                "<input type=\"text\" "+(th_arr[idx] == "book_no" ? "readonly" : "")+" class=\"form-control rounded-3\" id=\"floatingInput\" placeholder=\" "+th_arr[idx]+" \" name=\""+th_arr[idx]+"\" value='"+td.text()+"'>" +
+                                "<input type=\"text\" " + (th_arr[idx] == "book_no" ? "readonly" : "") + " class=\"form-control rounded-3\" id=\"floatingInput\" placeholder=\" " + th_arr[idx] + " \" name=\"" + th_arr[idx] + "\" value='" + td.text() + "'>" +
 
-                                "<label for=\"floatingInput\">"+th_arr[idx]+"</label>" +
+                                "<label for=\"floatingInput\">" + th_arr[idx] + "</label>" +
 
                                 "</div>"
                             );
@@ -442,17 +302,16 @@
                 );
 
                 $("#modal_edit form").append("<button class=\"w-100 mb-2 btn btn-lg rounded-4 btn-primary\" type=\"submit\">수정</button>");
+
+            } else {
+
+                $('#_type').val('D');
+
+                $('#_frm').submit();
+
             }
 
-        } else {
-
-            $('#_type').val('D');
-
-            $('#_frm').submit();
-
         }
-
-
     }
 
 

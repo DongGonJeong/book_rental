@@ -29,10 +29,10 @@ public class UserDto {
 
         if(user_no > 0) {
 
-            button = "<input id=\"edit_"+user_no+"\" type=\"button\" value=\"수정\" class=\"btn btn-modify\" style=\"background-color: lightskyblue;\" onclick=\"update_book("+user_no+", 'U')\">"
+            button = "<input id=\"edit_"+user_no+"\" type=\"button\" value=\"수정\" class=\"btn btn-modify\" style=\"background-color: lightskyblue;\" onclick=\"update_user("+user_no+", 'U')\">"
                     +
                     "<input type=\"button\" value=\"삭제\"\n" +
-                    "                                   class=\"btn btn-delete\" style=\"background-color: lightpink; margin-left: 1em !important\" onclick=\"update_book("+user_no+", 'D')\">";
+                    "                                   class=\"btn btn-delete\" style=\"background-color: lightpink; margin-left: 1em !important\" onclick=\"update_user("+user_no+", 'D')\">";
         }
 
 

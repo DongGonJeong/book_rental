@@ -37,7 +37,10 @@ public class BookDto {
                     "class=\"btn btn-delete\" style=\"background-color: lightpink; margin-left: 1em !important\" onclick=\"update_book("+book_no+", 'D')\">"
                     +
                     "<input type=\"button\" value=\"대여"+(borrow_user_no != -1?"불가":"")+"\" "+(borrow_user_no != -1?"disabled":"")+" class=\"btn btn-info\" style=\"background-color: lightgreen; " +
-                    "margin-left:1em !important;\" onclick=\"book_lend(" + book_no + ")\">";
+                    "margin-left:1em " +
+                    "!important;\" onclick=\"book_lend(" + book_no + ")\">";
+
+
 
         }
 

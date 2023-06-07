@@ -22,8 +22,8 @@
                '${user.address}',
                '대여가능',
                '개인사유',
-               0,
-               5);
+               5,
+               0);
     </insert>
 
     <select id="selectUser" resultType="dev.dk.book_rental.dto.UserDto">
