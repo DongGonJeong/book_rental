@@ -55,6 +55,14 @@
         WHERE book_no = ${book_no}
     </delete>
 
+    <update id="updateLendBook">
+
+        UPDATE book
+        SET borrow_user_no = ${user_no}
+        WHERE book_no = ${book_no}
+
+    </update>
+
 
 
 

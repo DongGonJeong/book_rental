@@ -17,6 +17,8 @@ public class BookDto {
 
     private String button;
 
+    private int borrow_user_no = -1;
+
     public BookDto(String name, String writer, String publication_dt, int price) {
 
         this.name = name;
@@ -32,7 +34,11 @@ public class BookDto {
             button = "<input id=\"edit_"+book_no+"\" type=\"button\" value=\"수정\" class=\"btn btn-modify\" style=\"background-color: lightskyblue;\" onclick=\"update_book("+book_no+", 'U')\">"
                     +
                     "<input type=\"button\" value=\"삭제\"\n" +
-                    "                                   class=\"btn btn-delete\" style=\"background-color: lightpink; margin-left: 1em !important\" onclick=\"update_book("+book_no+", 'D')\">";
+                    "class=\"btn btn-delete\" style=\"background-color: lightpink; margin-left: 1em !important\" onclick=\"update_book("+book_no+", 'D')\">"
+                    +
+                    "<input type=\"button\" value=\"대여"+(borrow_user_no != -1?"불가":"")+"\" "+(borrow_user_no != -1?"disabled":"")+" class=\"btn btn-info\" style=\"background-color: lightgreen; " +
+                    "margin-left:1em !important;\" onclick=\"book_lend(" + book_no + ")\">";
+
         }
 
 

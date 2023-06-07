@@ -382,6 +382,16 @@
         }
     );
 
+    function book_lend(book_no) {
+
+        $('#_frm').attr("action", "/book/lend");
+
+        $('_book_no').val(book_no);
+
+        $('#_frm').submit();
+
+    }
+
     function update_book(book_no, type) {
 
         $('#_book_no').val(book_no);

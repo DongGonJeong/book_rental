@@ -28,6 +28,19 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    @PostMapping("lend")
+    public String book_lend(HttpServletRequest request) {
+
+        int book_no = Integer.parseInt(request.getParameter("book_no"));
+
+        int user_no = ((UserDto)request.getSession().getAttribute("userInfo")).getUser_no();
+
+        bookService.setLendBook(book_no, user_no);
+
+        return "redirect:/book/list.html";
+
+    }
+
     @PostMapping("detail")
     public String detail_book(HttpServletRequest request, Model model) {
 

@@ -47,4 +47,11 @@ public class BookService {
 
 
     }
+
+    public void setLendBook(int book_no, int user_no) {
+
+        bookMapper.updateLendBook(book_no, user_no);
+
+
+    }
 }
