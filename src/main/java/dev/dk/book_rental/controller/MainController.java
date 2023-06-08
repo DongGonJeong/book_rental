@@ -1,6 +1,8 @@
 package dev.dk.book_rental.controller;
 
+import dev.dk.book_rental.dto.UserDto;
 import dev.dk.book_rental.service.LibraryService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,17 +23,43 @@ public class MainController {
     LibraryService libraryService;
 
 
+//    @PostMapping("")
+//    public String hello(Model model) {
+//
+////        System.out.println("GET 방식 request ==>> OK");
+//
+//        String view_text = libraryService.getViewText();
+//
+//        model.addAttribute("view_text", view_text);
+//
+////        return "/index0";
+//        return "redirect:/index.html";
+//
+//    }
+
+    @PostMapping("user_add")
+    public String user_add_form() {
+
+        return "redirect:/user/add_form.html";
+    }
+
     @PostMapping("")
-    public String hello(Model model) {
+    public String user_index(HttpServletRequest request) {
 
-//        System.out.println("GET 방식 request ==>> OK");
+        UserDto userDto = (UserDto) request.getSession().getAttribute("userInfo");
 
-        String view_text = libraryService.getViewText();
+        String url = "redirect:/index.html";
+//        String url = "redirect:/book/index.html";
 
-        model.addAttribute("view_text", view_text);
+        if(userDto == null) {
 
-//        return "/index0";
-        return "redirect:/index.html";
+            url = "redirect:sign_in/index.html";
+
+        }
+
+        System.err.println(url);
+
+        return url;
 
     }
 }

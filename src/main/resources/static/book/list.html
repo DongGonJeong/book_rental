@@ -18,6 +18,8 @@
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
+
+
     <style>
         .btn-delete {
 
@@ -241,6 +243,15 @@
             })
         }
     );
+
+    function book_return(book_no) {
+
+        $('#_frm').attr("action", "/book/return");
+
+        $('#_book_no').val(book_no);
+
+        $('#_frm').submit();
+    }
 
     function book_lend(book_no) {
 

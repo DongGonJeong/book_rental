@@ -102,18 +102,6 @@ public class RestUserController {
 
     }
 
-    @PostMapping("user_add")
-    public String user_add_form() {
-
-        return "redirect:/user/add_form.html";
-    }
-
-    @PostMapping("")
-    public String user_index() {
-
-//        return "/user/index";
-        return "redirect:/user/index.html";
-    }
 
     @PostMapping("add")
     public Map<String, Object> add_user(@RequestBody UserDto userDto) {

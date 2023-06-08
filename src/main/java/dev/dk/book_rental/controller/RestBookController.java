@@ -99,7 +99,7 @@ public class RestBookController {
                             || dataTableDto.getSearch() == null
             ) {
 
-                bookDto.createButton();
+                bookDto.createButton(userDto);
 
                 bookDTOFilterList.add(bookDto);
 

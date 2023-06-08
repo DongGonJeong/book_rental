@@ -27,7 +27,7 @@ public class BookDto {
         this.price = price;
     }
 
-    public void createButton() {
+    public void createButton(UserDto userDto) {
 
         if(book_no > 0) {
 
@@ -38,7 +38,9 @@ public class BookDto {
                     +
                     "<input type=\"button\" value=\"대여"+(borrow_user_no != -1?"불가":"")+"\" "+(borrow_user_no != -1?"disabled":"")+" class=\"btn btn-info\" style=\"background-color: lightgreen; " +
                     "margin-left:1em " +
-                    "!important;\" onclick=\"book_lend(" + book_no + ")\">";
+                    "!important;\" onclick=\"book_lend(" + book_no + ")\">"
+                    +
+                    "<input type=\"button\" value=\""+(borrow_user_no != -1?"반납":"")+"\" class=\"btn btn-return\" style=\"color: white; background-color: gray; margin-left:1em !important; "+(borrow_user_no != -1 ? "":"display:none;")+" \" onclick=\"book_return(" + book_no + ")\">";
 
 
 
