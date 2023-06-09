@@ -22,4 +22,7 @@ public interface BookMapper {
     void updateLendBook(@Param(value = "book_no") int book_no, @Param(value = "user_no") int user_no);
 
     void updateRentalCount(@Param(value = "user_no") int user_no);
+
+    void updateReturnBook(@Param(value = "book_no") int book_no);
+
 }

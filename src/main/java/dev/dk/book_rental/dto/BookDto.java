@@ -31,17 +31,26 @@ public class BookDto {
 
         if(book_no > 0) {
 
-            button = "<input id=\"edit_"+book_no+"\" type=\"button\" value=\"수정\" class=\"btn btn-modify\" style=\"background-color: lightskyblue;\" onclick=\"update_book("+book_no+", 'U')\">"
-                    +
-                    "<input type=\"button\" value=\"삭제\"\n" +
-                    "class=\"btn btn-delete\" style=\"background-color: lightpink; margin-left: 1em !important\" onclick=\"update_book("+book_no+", 'D')\">"
-                    +
-                    "<input type=\"button\" value=\"대여"+(borrow_user_no != -1?"불가":"")+"\" "+(borrow_user_no != -1?"disabled":"")+" class=\"btn btn-info\" style=\"background-color: lightgreen; " +
-                    "margin-left:1em " +
-                    "!important;\" onclick=\"book_lend(" + book_no + ")\">"
-                    +
-                    "<input type=\"button\" value=\""+(borrow_user_no != -1?"반납":"")+"\" class=\"btn btn-return\" style=\"color: white; background-color: gray; margin-left:1em !important; "+(borrow_user_no != -1 ? "":"display:none;")+" \" onclick=\"book_return(" + book_no + ")\">";
+            String btn1, btn2, btn3, btn4;
 
+            btn1 = "<input id=\"edit_"+book_no+"\" type=\"button\" value=\"수정\" class=\"btn btn-modify\" style=\"background-color: lightskyblue;\" onclick=\"update_book("+book_no+", 'U')\">";
+
+            btn2 = "<input type=\"button\" value=\"삭제\"\n" +
+                    "class=\"btn btn-delete\" style=\"background-color: lightpink; margin-left: 1em !important\" onclick=\"update_book("+book_no+", 'D')\">";
+
+            btn3 = "<input type=\"button\" value=\"대여"+(borrow_user_no != -1?"불가":"")+"\" "+(borrow_user_no != -1?"disabled":"")+" class=\"btn btn-info\" style=\"background-color: lightgreen; margin-left:1em !important;\" onclick=\"book_lend(" + book_no + ")\">";
+
+            btn4 = "<input type=\"button\" value=\""+(borrow_user_no != -1?"반납":"")+"\" "+(borrow_user_no != userDto.getUser_no() ? "disabled":"")+" class=\"btn btn-return\" style=\"color: white; " +
+                    "background-color: " +
+                    "gray; margin-left:1em !important; "+(borrow_user_no != -1 ? "":"display:none;")+" \" onclick=\"book_return(" + book_no + ")\">";
+
+            if(borrow_user_no != userDto.getUser_no()) {
+
+                btn4 = "";
+
+            }
+
+            button = btn1+btn2+btn3+btn4;
 
 
         }

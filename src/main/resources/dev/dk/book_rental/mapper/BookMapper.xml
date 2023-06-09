@@ -69,6 +69,12 @@
         WHERE user_no = ${user_no}
     </update>
 
+    <update id="updateReturnBook">
+        UPDATE book
+        SET borrow_user_no = null
+        WHERE book_no = ${book_no}
+    </update>
+
 
 
 

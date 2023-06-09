@@ -28,6 +28,19 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    @PostMapping("return")
+    public String book_return(HttpServletRequest request) {
+
+        int book_no = Integer.parseInt(request.getParameter("book_no"));
+
+        int user_no = ((UserDto)request.getSession().getAttribute("userInfo")).getUser_no();
+
+        bookService.setReturnBook(book_no);
+
+        return "redirect:/book/list";
+
+    }
+
     @PostMapping("lend")
     public String book_lend(HttpServletRequest request) {
 
