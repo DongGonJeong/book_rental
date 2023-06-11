@@ -72,7 +72,7 @@
 
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page"
-                   href="/book/book_add">
+                   href="/book/list">
                     <span data-feather="home" class="align-text-bottom"></span>
                     &nbsp;&nbsp;도서 대여
                 </a>
@@ -80,7 +80,7 @@
 
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page"
-                   href="/user/list">
+                   href="/book/list">
                     <span data-feather="home" class="align-text-bottom"></span>
                     &nbsp;&nbsp;도서 반납
                 </a>
@@ -88,7 +88,7 @@
 
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page"
-                   href="/user/list">
+                   href="/book/list">
                     <span data-feather="home" class="align-text-bottom"></span>
                     &nbsp;&nbsp;연체 관리
                 </a>

@@ -71,7 +71,7 @@
 
     <update id="updateReturnBook">
         UPDATE book
-        SET borrow_user_no = null
+        SET borrow_user_no = -1
         WHERE book_no = ${book_no}
     </update>
 

@@ -25,6 +25,27 @@ public class RestUserController {
     @Autowired
     UserService userService;
 
+    @GetMapping("login_check")
+    public Map<String, Object> login_check(HttpServletRequest request) {
+
+        UserDto userDto = (UserDto) request.getSession().getAttribute("userInfo");
+
+        Map<String, Object> return_map = new HashMap<>();
+
+        boolean status = true;
+
+        if(userDto == null) {
+
+            status = false;
+
+        }
+
+        return_map.put("status", status);
+
+        return return_map;
+
+    }
+
     @PostMapping("sign_in_process")
     public Map<String, Object> sign_in_process(HttpServletRequest request) {
 
@@ -53,6 +74,7 @@ public class RestUserController {
 
                     status = true;
                 }
+
             } catch(Exception e) {
 
                 System.err.println("error 발생");

@@ -33,35 +33,34 @@ public class RestBookController {
     @Autowired
     BookService bookService;
 
-    @PostMapping("update_process")
-    public String update_process(HttpServletRequest request, Model model) {
-
-        String name = request.getParameter("name");
-
-        String writer = request.getParameter("writer");
-
-        String publication_dt = request.getParameter("publication_dt");
-
-        int price = Integer.parseInt(request.getParameter("price"));
-
-        int book_no = Integer.parseInt(request.getParameter("book_no"));
-
-        BookDto bookDto = new BookDto();
-
-        bookDto.setName(name);
-        bookDto.setWriter(writer);
-        bookDto.setPublication_dt(publication_dt);
-        bookDto.setPrice(price);
-
-
-        bookDto.setBook_no(book_no);
-
-        boolean update_check = bookService.updateBook(bookDto);
-
-
-        return "redirect:/book/list.html";
-
-    }
+//    @PostMapping("update_process")
+//    public String update_process(HttpServletRequest request, Model model) {
+//
+//        String name = request.getParameter("name");
+//
+//        String writer = request.getParameter("writer");
+//
+//        String publication_dt = request.getParameter("publication_dt");
+//
+//        int price = Integer.parseInt(request.getParameter("price"));
+//
+//        int book_no = Integer.parseInt(request.getParameter("book_no"));
+//
+//        BookDto bookDto = new BookDto();
+//
+//        bookDto.setName(name);
+//        bookDto.setWriter(writer);
+//        bookDto.setPublication_dt(publication_dt);
+//        bookDto.setPrice(price);
+//
+//
+//        bookDto.setBook_no(book_no);
+//
+//        boolean update_check = bookService.updateBook(bookDto);
+//
+//
+//        return "redirect:/book/list.html";
+//    }
 
 
 
@@ -119,19 +118,19 @@ public class RestBookController {
     }
 
 
-    @PostMapping("book_add")
-    public String book_add_form() {
+//    @PostMapping("book_add")
+//    public String book_add_form() {
+//
+////        return "/book/add_form";
+//        return "redirect:/book/add_form.html";
+//
+//    }
 
-//        return "/book/add_form";
-        return "redirect:/book/add_form.html";
-
-    }
-
-    @PostMapping("")
-    public String book_index() {
-
-        return "/book/index";
-    }
+//    @PostMapping("")
+//    public String book_index() {
+//
+//        return "/book/index";
+//    }
 
     @PostMapping("add")
     public Map<String, Object> add_book(@RequestBody BookDto bookDto) {

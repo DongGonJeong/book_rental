@@ -28,6 +28,9 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    @Autowired
+    UserService userService;
+
     @PostMapping("return")
     public String book_return(HttpServletRequest request) {
 
@@ -50,7 +53,13 @@ public class BookController {
 
         int user_no = ((UserDto)request.getSession().getAttribute("userInfo")).getUser_no();
 
-        bookService.setLendBook(book_no, user_no);
+        int r_count = userService.getUserInfo(user_no).getOn_rental_count();
+
+        if(r_count < 5) {
+
+            bookService.setLendBook(book_no, user_no);
+
+        }
 
         return "redirect:/book/list.html";
 
